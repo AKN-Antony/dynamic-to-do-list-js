@@ -15,32 +15,46 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Task Creation and Removal:
+        // ===== TASK CREATION AND REMOVAL ===== //
+        // Create new li element
         const li = document.createElement('li');
+        // Set its textContent to taskText
         li.textContent = taskText;
 
+        // Create remove button
         const removeButton = document.createElement('button');
+        // Set textContent to "Remove"
         removeButton.textContent = "Remove";
+        // Give it class name 'remove-btn'
         removeButton.className = 'remove-btn';
 
         // Assign onclick event to remove button
         removeButton.onclick = function() {
+            // Remove the li element from taskList when triggered
             taskList.removeChild(li);
         };
 
+        // Append the remove button to the li element
         li.appendChild(removeButton);
+        // Append the li to taskList
         taskList.appendChild(li);
 
-        // Clear the input field
+        // Clear the task input field
         taskInput.value = "";
+        // ===== END TASK CREATION AND REMOVAL ===== //
     }
 
-    // Attach Event Listeners:
+    // ===== ATTACH EVENT LISTENERS ===== //
+    // Add click event listener to addButton
     addButton.addEventListener('click', addTask);
 
+    // Add keypress event listener to taskInput
     taskInput.addEventListener('keypress', function(event) {
+        // Check if Enter key was pressed
         if (event.key === 'Enter') {
+            // Call addTask if Enter was pressed
             addTask();
         }
     });
+    // ===== END EVENT LISTENERS ===== //
 });
